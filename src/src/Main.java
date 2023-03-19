@@ -1,7 +1,13 @@
+import org.w3c.dom.css.Counter;
+
 //implementing Hi and Hello classes functionalities
 public class Main {
+
+
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Hello world!");
+
+    CounterClass c = new CounterClass();
 
 
 //        Runnable obj1 = ;
@@ -14,6 +20,7 @@ public class Main {
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 5; i++) {
                 System.out.println("Hello "+Thread.currentThread().getPriority());
+                c.counterMethod();
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -26,6 +33,7 @@ public class Main {
         Thread t2 = new Thread(() -> {
             for (int i = 0; i < 5; i++) {
                 System.out.println("Hi "+Thread.currentThread().getPriority());
+                c.counterMethod();
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -61,6 +69,8 @@ public class Main {
         System.out.println("Thread 1 is Alive: " + t1.isAlive());
         t1.join();
         t2.join();
+
+        System.out.println("The count is: "+c.count);
 
         //checking if the thread 1 is alive or not
         System.out.println("Thread 1 is Alive: " + t1.isAlive());
